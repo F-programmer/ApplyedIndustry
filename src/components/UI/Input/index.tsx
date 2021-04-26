@@ -8,6 +8,9 @@ import {
 	InputLabel,
 } from "@material-ui/core";
 
+// interfaces
+import { IUIInput } from "./interfaces";
+
 function UIInput({
 	name,
 	value,
@@ -23,7 +26,7 @@ function UIInput({
 	min,
 	fullWidth = false,
 	...props
-}) {
+}: IUIInput) {
 	const endAdornment = endIcon ? (
 		<InputAdornment position="end">
 			<IconButton onClick={onEndClick}>{endIcon}</IconButton>
@@ -45,8 +48,8 @@ function UIInput({
 				onChange={(element) => {
 					const newValue = element.target.value;
 					if (type === "number") {
-						if (max && newValue > max) onChange(max);
-						else if (min && newValue < min) onChange(min);
+						if (max && parseInt(newValue) > max) onChange(max);
+						else if (min && parseInt(newValue) < min) onChange(min);
 						else onChange(newValue);
 					} else onChange(newValue);
 				}}

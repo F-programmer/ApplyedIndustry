@@ -1,6 +1,6 @@
 // libs
 import React from "react";
-import { Slide } from "@material-ui/core";
+import Slide from "@material-ui/core/Slide";
 
 // providers
 import { ThemeProvider as MUProvider } from "@material-ui/core/styles";
@@ -28,10 +28,12 @@ página
 */
 
 // my render configs
-import Snack from "components/render/Snack";
+import Snack from "components/Render/Snack";
 import Loader from "../Loader";
 
-function App() {
+function App(): JSX.Element {
+	const transitionComponent: any = Slide;
+
 	return (
 		<MUProvider theme={theme}>
 			<SnackbarProvider
@@ -40,7 +42,7 @@ function App() {
 					vertical: "bottom",
 					horizontal: "right",
 				}}
-				TransitionComponent={Slide}
+				TransitionComponent={transitionComponent}
 			>
 				<ReduxProvider store={store}>
 					<PersistGate persistor={persistor}>

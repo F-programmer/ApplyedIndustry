@@ -6,10 +6,10 @@ import { Backdrop, CircularProgress, Box } from "@material-ui/core";
 import { useSelector } from "react-redux";
 import { getLoader } from "store";
 
-function Loader() {
-	const loader = useSelector(getLoader);
+function Loader(): JSX.Element {
+	const loader: boolean = useSelector(getLoader);
 
-	const [children, setChildren] = useState(null);
+	const [children, setChildren] = useState<JSX.Element | null>(null);
 
 	useEffect(() => {
 		if (loader)

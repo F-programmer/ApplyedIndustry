@@ -2,11 +2,15 @@ import produce from "immer";
 
 import { SET_TESTE_P } from "../names";
 
-const initialState = {
+// interfaces
+import { PayloadAction } from "@reduxjs/toolkit";
+import { Persisted } from "./interfaces";
+
+const initialState: Persisted = {
 	value: "",
 };
 
-const persisted = (state = initialState, action) =>
+const persisted = (state = initialState, action: PayloadAction<Persisted>) =>
 	produce(state, (draft) => {
 		switch (action.type) {
 			case SET_TESTE_P: {

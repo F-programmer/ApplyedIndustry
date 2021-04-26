@@ -1,4 +1,4 @@
-export const isDefined = (value) => {
+export const isDefined = (value: any): boolean => {
 	// validando se nao possui valores padroes de 'null'
 	if (value !== null && value !== undefined && value !== "") {
 		// validando se eh um array

@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getPersisted, getNormal, setPersist, setNormal } from "store";
 
 // componentes
-import { UIInput } from "components/ui/";
+import { UIInput } from "components/UI";
 
 // icons
 import { AiFillLock } from "react-icons/ai";

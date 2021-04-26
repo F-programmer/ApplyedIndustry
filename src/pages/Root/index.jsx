@@ -3,7 +3,7 @@ import React from "react";
 import { Button, Grid, Box, TextField } from "@material-ui/core";
 
 // componentes
-import { UIInput } from "components/ui/";
+import { UIInput } from "components/UI";
 
 // icons
 import { AiFillLock } from "react-icons/ai";

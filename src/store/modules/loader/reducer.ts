@@ -1,11 +1,15 @@
 import produce from "immer";
 import { SET_LOADER } from "../names";
 
-const initialState = {
+// interfaces
+import { PayloadAction } from "@reduxjs/toolkit";
+import { Loader } from "./interfaces";
+
+const initialState: Loader = {
 	value: false,
 };
 
-const loader = (state = initialState, action) =>
+const loader = (state = initialState, action: PayloadAction<Loader>) =>
 	produce(state, (draft) => {
 		switch (action.type) {
 			case SET_LOADER:

@@ -6,7 +6,7 @@ import { useSnackbar } from "notistack";
 import { useDispatch, useSelector } from "react-redux";
 import { getSnacks, resetSnack } from "store";
 
-function Snack() {
+function Snack(): JSX.Element {
 	const dispatch = useDispatch();
 
 	const { enqueueSnackbar, closeSnackbar } = useSnackbar();
@@ -25,9 +25,10 @@ function Snack() {
 				dispatch(resetSnack());
 			}, 2500);
 		}
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [snacks]);
 
-	return null;
+	return <div />;
 }
 
 export default Snack;
