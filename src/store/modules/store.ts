@@ -15,8 +15,9 @@ import { reducers } from "./rootReducer";
 const sagaMiddleware = createSagaMiddleware();
 
 // criar a store, usar persist, aplicar a saga
+const typedReducers: any = reducers;
 const store = createStore(
-	rootPersist(reducers),
+	rootPersist(typedReducers),
 	applyMiddleware(sagaMiddleware)
 );
 

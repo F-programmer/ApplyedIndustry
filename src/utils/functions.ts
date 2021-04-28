@@ -15,3 +15,14 @@ export const isDefined = (value: any): boolean => {
 	// caso seja 'null', eh invalido
 	return false;
 };
+
+export const randomColorPicker = (): string => {
+	const hexadecimais = "0123456789ABCDEF";
+	let color = "#";
+
+	// pega 6 posicoes aleatorias do array
+	for (var i = 0; i < 6; i++) {
+		color += hexadecimais[Math.floor(Math.random() * 16)];
+	}
+	return color;
+};
