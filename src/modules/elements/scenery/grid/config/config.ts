@@ -4,6 +4,7 @@ import { GridCell } from "../interfaces/config.interface";
 import { Hover, Click } from "../../../../events";
 import { EventsGrid } from "../controller/events";
 import { SelectRange } from "../../../../events/selectrange";
+import { Colors } from "modules/layout/styles/colors";
 export class ConfigGrid {
 	// singleton
 	private static instance: ConfigGrid;
@@ -22,11 +23,11 @@ export class ConfigGrid {
 	public lineSize: number = 2;
 	public gridStretch: number = 2;
 	public readonly colors = {
-		normal: "#78756c",
-		limit: "#405351",
-		hovered: "#5f96b0",
-		background: "#cfcbb8",
-		selected: "#78618c",
+		normal: Colors.ocreDark,
+		limit: Colors.greenNormal,
+		hovered: Colors.lightblueDark,
+		background: Colors.ocreLight,
+		selected: Colors.yellowDark,
 	};
 	private cells: GridCell[] = [];
 	public selectedCells: GridCell[] = [];

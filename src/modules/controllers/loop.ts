@@ -1,5 +1,5 @@
 import { LoopRender } from "./render-loop";
-import { Main } from "../core/main";
+import { Main } from "../core/Main";
 import { Hover } from "../events/hover";
 import { Click } from "../events/click";
 export class Loop {

@@ -61,22 +61,9 @@ export class EventsGrid {
 					ye >= cell.y + ConfigGrid.getInstance().gridSize;
 
 				if (isCellInRange) return isCellInRange;
-				// else {
-				// 	const isGridJoin =
-				// 		(xs >= cell.x &&
-				// 			xs <= cell.x &&
-				// 			ys >= cell.y &&
-				// 			ys <= cell.y) ||
-				// 		(xe >= cell.x &&
-				// 			xe <= cell.x &&
-				// 			ye >= cell.y &&
-				// 			ye <= cell.y);
-				// 	if (isGridJoin) return isGridJoin;
-				// }
 			}
 			return false;
 		});
-		console.log("selectedCells", selectedCells);
 
 		ConfigGrid.getInstance().selectedCells = selectedCells;
 	}

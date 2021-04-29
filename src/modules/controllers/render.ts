@@ -1,6 +1,6 @@
 /* eslint-disable no-empty-pattern */
 import { IDrawSquare, IDrawQuadri } from "./interfaces";
-import { Main } from "../core/main";
+import { Main } from "../core/Main";
 
 export class GlobalRender {
 	// singleton

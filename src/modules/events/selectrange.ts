@@ -1,4 +1,5 @@
 import { SelectRangePoint, SelectRangeAction, Click } from "./index";
+import { Mouse } from "../core/Mouse";
 
 export class SelectRange {
 	// singleton
@@ -51,6 +52,7 @@ export class SelectRange {
 					!SelectRange.getInstance().startPoint
 				) {
 					SelectRange.getInstance().startPoint = props;
+					Mouse.getInstance().setMouseMode("select");
 				}
 			},
 			onLeave: (props) => {
@@ -60,10 +62,12 @@ export class SelectRange {
 				) {
 					SelectRange.getInstance().endPoint = props;
 					SelectRange.getInstance().onSelecStarts();
+					Mouse.getInstance().setMouseMode("interact");
 				} else {
 					SelectRange.getInstance().startPoint = null;
 					SelectRange.getInstance().endPoint = null;
 					SelectRange.getInstance().onSelecEnds();
+					Mouse.getInstance().setMouseMode("normal");
 				}
 			},
 		});

@@ -1,8 +1,10 @@
-import { Main } from "../core/main";
+import { Main } from "../core/Main";
 import { Enviroments } from "../controllers/enviroments";
 import { Loop } from "../controllers/loop";
 import { GlobalSetup } from "./global-setup";
 import { GlobalRender } from "../controllers/render";
+import { Mouse } from "../core/Mouse";
+import { Colors } from "../layout/styles/colors";
 
 export class Start {
 	private static instance: Start | null = null;
@@ -29,12 +31,14 @@ export class Start {
 		GlobalRender.getInstance().drawQuadri({
 			canvasX: 0,
 			canvasY: 0,
-			color: "#cfcbb8",
+			color: Colors.ocreLight,
 			height: Enviroments.getInstance().client_height,
 			width: Enviroments.getInstance().client_width,
 		});
 
 		GlobalSetup.getInstance().run();
+
+		Mouse.getInstance().run();
 
 		Loop.getInstance().run();
 	}

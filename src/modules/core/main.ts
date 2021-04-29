@@ -1,8 +1,7 @@
 import { RefObject } from "react";
 import { Start } from "../exec/start";
-import { Hover } from "../events/hover";
-import { Click } from "../events/click";
-import { Cursors } from "../layout/styles";
+import { Hover, Click } from "../events";
+import { AddCss } from "./index";
 
 export class Main {
 	// attrs
@@ -59,9 +58,6 @@ export class Main {
 					y: props.y,
 				});
 
-			// styles
-			canvas.style.cursor = Cursors.getInstance().selectCells;
-
 			Main.ref = canvas;
 
 			const context: any = Main.ref.getContext("2d");
@@ -102,5 +98,10 @@ export class Main {
 			ctx: Main.ctx,
 			windowRef: Main.windowRef,
 		};
+	}
+
+	public addCss({ name, value }: AddCss): void {
+		// styles
+		Main.ref.style[name] = value;
 	}
 }
