@@ -27,35 +27,34 @@ export class Main {
 			canvas.height = canvas.clientHeight;
 
 			// events
+			const mousePosition = (evt: any) => ({
+				x: parseInt(String(evt.x - canvas.getBoundingClientRect().x)),
+				y: parseInt(String(evt.y - canvas.getBoundingClientRect().y)),
+			});
 			// hover
 			canvas.onmouseenter = (props) =>
 				Hover.getInstance().onHover({
 					isHovering: true,
-					x: props.x,
-					y: props.y,
+					...mousePosition(props),
 				});
 			canvas.onmousemove = (props) =>
 				Hover.getInstance().onHover({
 					isHovering: true,
-					x: props.x,
-					y: props.y,
+					...mousePosition(props),
 				});
 			canvas.onmouseleave = (props) =>
 				Hover.getInstance().onHover({
 					isHovering: false,
-					x: props.x,
-					y: props.y,
+					...mousePosition(props),
 				});
 			// click
 			canvas.onmousedown = (props) =>
 				Click.getInstance().onMouseDown({
-					x: props.x,
-					y: props.y,
+					...mousePosition(props),
 				});
 			canvas.onmouseup = (props) =>
 				Click.getInstance().onMouseUp({
-					x: props.x,
-					y: props.y,
+					...mousePosition(props),
 				});
 
 			Main.ref = canvas;

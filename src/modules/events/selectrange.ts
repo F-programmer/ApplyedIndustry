@@ -77,9 +77,4 @@ export class SelectRange {
 			onLeave,
 		});
 	}
-
-	public printProps(): void {
-		console.log("from", SelectRange.getInstance().startPoint);
-		console.log("to", SelectRange.getInstance().endPoint);
-	}
 }

@@ -11,3 +11,10 @@ export interface IDrawQuadri {
 	width: number;
 	height: number;
 }
+
+export interface ItemRender {
+	priority: number;
+	action: (props: IDrawQuadri | IDrawSquare) => void;
+	canRender: boolean;
+	props: IDrawQuadri | IDrawSquare;
+}

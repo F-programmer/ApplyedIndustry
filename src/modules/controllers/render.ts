@@ -1,6 +1,7 @@
 /* eslint-disable no-empty-pattern */
-import { IDrawSquare, IDrawQuadri } from "./interfaces";
+import { IDrawSquare, IDrawQuadri, ItemRender } from "./interfaces";
 import { Main } from "../core/Main";
+import { RemoveArrayDuplicates } from "../utils";
 
 export class GlobalRender {
 	// singleton
@@ -10,6 +11,8 @@ export class GlobalRender {
 		if (!this.instance) this.instance = new GlobalRender();
 		return this.instance;
 	}
+
+	private renderItems: ItemRender[] = [];
 
 	private preserveState(): void {
 		const attrs = Main.getInstance().getAtributes();
@@ -44,5 +47,32 @@ export class GlobalRender {
 			attrs.ctx.fillStyle = color;
 			attrs.ctx.fillRect(canvasX, canvasY, width, height);
 		});
+	}
+
+	public addFixedRender({ ...props }: ItemRender): void {
+		GlobalRender.getInstance().renderItems.push(props);
+	}
+
+	public renderAllItems(): void {
+		// referencia
+		const itemsRef = GlobalRender.getInstance().renderItems;
+		// pegando todas as prioridades possiveis, removendo duplicados
+		const prioritys = RemoveArrayDuplicates(
+			itemsRef.map((item) => item.priority)
+			// ordeando crescentemente
+		).sort();
+		// percorrendo prioridades
+		prioritys.forEach((priority) =>
+			// percorrendo items
+			itemsRef
+				// filtrando os da prioridade atual
+				.filter((item) => item.priority === priority)
+				// renderizando
+				.forEach((item) => {
+					if (item.canRender) {
+						item.action(item.props);
+					}
+				})
+		);
 	}
 }
