@@ -11,10 +11,16 @@ export interface IDrawQuadri {
 	width: number;
 	height: number;
 }
+export interface IWriteText {
+	color: string;
+	canvasX: number;
+	canvasY: number;
+	text: string;
+	font?: string;
+}
 
 export interface ItemRender {
 	priority: number;
-	action: (props: IDrawQuadri | IDrawSquare) => void;
+	action: () => void;
 	canRender: boolean;
-	props: IDrawQuadri | IDrawSquare;
 }

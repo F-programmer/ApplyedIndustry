@@ -1,4 +1,5 @@
 import { ConfigGrid } from "../elements/scenery/grid/config/config";
+import { MainCreate } from "../elements/create/MainCreate";
 export class GlobalSetup {
 	// singleton
 	private static instance: GlobalSetup;
@@ -10,5 +11,7 @@ export class GlobalSetup {
 
 	public run(): void {
 		ConfigGrid.getInstance().setup();
+
+		MainCreate.getInstance().run();
 	}
 }

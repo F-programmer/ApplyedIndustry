@@ -31,6 +31,12 @@ export class Hover {
 					x: Hover.getInstance().x,
 					y: Hover.getInstance().y,
 				});
+			else
+				item.onLeave({
+					isHovering: Hover.getInstance().isHovering,
+					x: Hover.getInstance().x,
+					y: Hover.getInstance().y,
+				});
 		});
 	}
 	private onHoverLeave() {

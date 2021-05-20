@@ -19,10 +19,27 @@ export class Mouse {
 	};
 	public currentState: States = "normal";
 
+	/**
+	 * configs base device(mouse)
+	 *
+	 * @example
+	 *   run(); //
+	 *
+	 * @returns {void}
+	 */
 	public run(): void {
 		Mouse.getInstance().setMouseMode("normal");
 	}
 
+	/**
+	 * alters mouse cursor
+	 *
+	 * @example
+	 *   setMouseMode("interact"); //
+	 *
+	 * @param {"normal" | "canDrag" | "draggin" | "select" | "interact" | "info"} cursor
+	 * @returns {void}
+	 */
 	public setMouseMode(cursor: States): void {
 		Mouse.getInstance().currentState = cursor;
 		Mouse.getInstance().setIcon(
@@ -30,6 +47,15 @@ export class Mouse {
 		);
 	}
 
+	/**
+	 * alters mains cursos css
+	 *
+	 * @example
+	 *   setIcon("interact"); //
+	 *
+	 * @param {string} value
+	 * @returns {void}
+	 */
 	public setIcon(value: string): void {
 		Main.getInstance().addCss({ name: "cursor", value: value });
 	}

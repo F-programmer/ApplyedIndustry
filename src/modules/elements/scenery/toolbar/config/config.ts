@@ -1,6 +1,12 @@
-import FinalClass from "modules/elements/models/classes/FinalClass";
-export class ToolBar extends FinalClass {
-	public color: string = "";
+import { ElementFinalClass } from "modules/elements/models/classes";
+import { RenderToolbar } from "../controller/render";
+export class ToolBar extends ElementFinalClass {
+	public run(): void {
+		const attrs = this.getAttrs();
 
-	public run(): void {}
+		const render = new RenderToolbar();
+		render.setup({
+			...attrs,
+		});
+	}
 }

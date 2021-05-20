@@ -1,19 +1,19 @@
-import { IFinalClass } from "./index";
+import { IRenderClass } from "./index";
 
-class FinalClass {
+class RenderClass {
 	private x: number = 0;
 	private y: number = 0;
 	private width: number = 0;
 	private height: number = 0;
 
-	constructor({ x, y, width, height }: IFinalClass) {
+	constructor(x: number, y: number, width: number, height: number) {
 		this.x = x;
 		this.y = y;
 		this.width = width;
 		this.height = height;
 	}
 
-	public getAttrs(): IFinalClass {
+	public getAttrs(): IRenderClass {
 		return {
 			x: this.x,
 			y: this.y,
@@ -23,5 +23,5 @@ class FinalClass {
 	}
 }
 
-export { FinalClass };
-export default FinalClass;
+export { RenderClass };
+export default RenderClass;

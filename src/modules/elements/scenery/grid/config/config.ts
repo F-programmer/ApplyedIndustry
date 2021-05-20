@@ -38,7 +38,8 @@ export class ConfigGrid {
 
 	public setup(): void {
 		ConfigGrid.getInstance().width = Enviroments.getInstance().game_width;
-		ConfigGrid.getInstance().height = Enviroments.getInstance().game_height;
+		ConfigGrid.getInstance().height =
+			Enviroments.getInstance().game_height - 100;
 
 		const settings = {
 			size: ConfigGrid.getInstance().gridSize,

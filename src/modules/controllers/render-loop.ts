@@ -11,6 +11,17 @@ export class LoopRender {
 
 	public run(): void {
 		ConfigGrid.getInstance().render();
+		// GlobalRender.getInstance().addFixedRender({
+		// 	action: () =>
+		// 		GlobalRender.getInstance().writeText({
+		// 			canvasX: 0,
+		// 			canvasY: 30,
+		// 			color: "#f32",
+		// 			text: "Eae pessoal tudo beleza? ah que legal",
+		// 		}),
+		// 	canRender: true,
+		// 	priority: 10,
+		// });
 		GlobalRender.getInstance().renderAllItems();
 	}
 }

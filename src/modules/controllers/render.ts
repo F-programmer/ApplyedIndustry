@@ -1,7 +1,8 @@
 /* eslint-disable no-empty-pattern */
-import { IDrawSquare, IDrawQuadri, ItemRender } from "./interfaces";
+import { IDrawSquare, IDrawQuadri, IWriteText, ItemRender } from "./interfaces";
 import { Main } from "../core/Main";
 import { RemoveArrayDuplicates } from "../utils";
+import { Enviroments } from "./enviroments";
 
 export class GlobalRender {
 	// singleton
@@ -48,6 +49,24 @@ export class GlobalRender {
 			attrs.ctx.fillRect(canvasX, canvasY, width, height);
 		});
 	}
+	public writeText({
+		font = Enviroments.getInstance().font,
+		canvasX,
+		canvasY,
+		color,
+		text,
+	}: IWriteText): void {
+		const attrs = Main.getInstance().getAtributes();
+		GlobalRender.getInstance().selfRender(() => {
+			attrs.ctx.font = font;
+			attrs.ctx.fillStyle = color;
+			attrs.ctx.fillText(
+				text,
+				canvasX,
+				canvasY + Enviroments.getInstance().font_pixels.spacingH
+			);
+		});
+	}
 
 	public addFixedRender({ ...props }: ItemRender): void {
 		GlobalRender.getInstance().renderItems.push(props);
@@ -69,9 +88,7 @@ export class GlobalRender {
 				.filter((item) => item.priority === priority)
 				// renderizando
 				.forEach((item) => {
-					if (item.canRender) {
-						item.action(item.props);
-					}
+					if (item.canRender) item.action();
 				})
 		);
 	}

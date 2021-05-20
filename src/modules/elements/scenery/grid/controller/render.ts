@@ -100,12 +100,30 @@ export class RenderGrid {
 		cell: GridCell,
 		color: string = ConfigGrid.getInstance().colors.hovered
 	): void {
-		const stroke = ConfigGrid.getInstance().lineSize;
+		const settings = {
+			stroke: ConfigGrid.getInstance().lineSize,
+			size: ConfigGrid.getInstance().gridSize,
+			mh: ConfigGrid.getInstance().height,
+			mw: ConfigGrid.getInstance().width,
+		};
+
 		GlobalRender.getInstance().drawQuadri({
-			canvasX: cell.x + stroke,
-			canvasY: cell.y + stroke,
-			height: ConfigGrid.getInstance().gridSize,
-			width: ConfigGrid.getInstance().gridSize,
+			canvasX: cell.x + settings.stroke,
+			canvasY: cell.y + settings.stroke,
+			height:
+				// o valor a ser renderizado ultrapassa os limites do grid?
+				cell.y + settings.size > settings.mh
+					? // caso sim, descontamos a posicao + 2 * a linha dos limites da grade
+					  // 2 * pq tem a linha da cell + a linha da borda da grid
+					  settings.mh - cell.y - settings.stroke * 2
+					: settings.size,
+			// o valor a ser renderizado ultrapassa os limites do grid?
+			width:
+				cell.x + settings.size > settings.mw
+					? // caso sim, descontamos a posicao + 2 * a linha dos limites da grade
+					  // 2 * pq tem a linha da cell + a linha da borda da grid
+					  settings.mw - cell.x - settings.stroke * 2
+					: settings.size,
 			color,
 		});
 	}
